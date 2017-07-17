@@ -1,0 +1,33 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:1.13.3
+    ports:
+    - "80:80"
+    volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf     
+    depends_on:
+    - api
+  api:
+    image: node:8.1.2
+    ports:
+    - "3000"
+    working_dir: "/usr/src/app/"
+    command: sh -c "yarn && yarn run build -- --watch & yarn run dev"
+    volumes:
+    - ./../styleway-api:/usr/src/app
+    - ./../styleway-assets:/usr/src/assets
+    depends_on:
+    - mongo
+  webapp:
+    image: node:8.1.2
+    working_dir: "/usr/src/app/"
+    command: sh -c "yarn && yarn run dev"
+    volumes:
+    - ./../styleway-webapp:/usr/src/app
+    ports:
+    - "3000"
+  mongo:
+    image: mongo:3.4.6
+    volumes:
+    - ./../styleway-data:/data/db
