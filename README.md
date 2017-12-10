@@ -1,14 +1,6 @@
 # Styleway
 
-Styleway is a tool for creating style guides. It is in early development stage. Come for more mature stage in few weeks (most work should be done before 31.09.2017).
-
-## Planned functionalities
-
-- Ability to generate styleguide from source files stylesheets
-- Control panel to edit guide from the web app
-- Uploading needed assets for code snippets
-- Versioning of styleguide
-- Easy installation and upgrades with Docker based containers
+Styleway is a tool for creating style guides.
 
 ## Architecture
 
@@ -17,7 +9,6 @@ Styleway is a tool for creating style guides. It is in early development stage. 
 - api in node.js with express
 - web app build with next.js (react kit)
 - mongodb for api to store all the data
-- shared volume to store all assets
 
 ## Development
 
@@ -28,12 +19,11 @@ For development docker-compose.yml was created. To run in you simply run `docker
 styleway - directory with docker-compose.yml
 styleway-webapp - repository with web app files (currently private, ask for access)
 styleway-api - repository with api files (currently private, ask for access)
-styleway-assets - directory for assets
 styleway-data - directory for mongodb data
 
 ### Connecting to containers
 
-If you want to execute command in the container (for example install dependencies without having yarn installed locally) you can connect to container using: `docker-compose exec webapp sh`. It will run shell in webapp container. To connect to api container just change webapp for api.
+If you want to execute command in the container (for example install dependencies without having yarn installed locally) you can connect to container using: `docker-compose exec webapp bash`. It will run shell in webapp container. To connect to api container just change webapp for api.
 
 ### Hosts
 
