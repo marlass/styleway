@@ -13,7 +13,7 @@ services:
     ports:
     - "3000"
     working_dir: "/usr/src/app/"
-    command: sh -c "yarn && ( yarn run build -- --watch & yarn run dev )"
+    command: sh -c "mkdir uploads -p && mkdir uploads/source -p && mkdir uploads/css -p && mkdir uploads/js -p && mkdir uploads/assets -p && yarn && ( yarn run build -- --watch & yarn run dev )"
     volumes:
     - ./../styleway-api:/usr/src/app
     - ./../styleway-assets:/usr/src/assets
